@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('presidents', function (Blueprint $table) {
             $table->id();
+            $table->string('first_name', 35);
+            $table->string('middle_name', 35);
+            $table->string('last_name', 35);
+            $table->unsignedInteger('age');
+            $table->date('year_started');
+            $table->date('year_ended');
+            $table->string('photo')->nullable();
             $table->timestamps();
         });
     }

@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use App\Casts\Address;
+
 class President extends Model
 {
     use HasFactory;
@@ -16,7 +18,8 @@ class President extends Model
         'age',
         'address',
         'year_started',
-        'year_ended'
+        'year_ended',
+        'photo'
     ];
 
     protected $appends = ['fullname'];
@@ -24,10 +27,11 @@ class President extends Model
     protected $casts = [
         'year_started'  => 'date:Y-m-d',
         'year_ended'    => 'date:Y-m-d',
+        'address'       =>  Address::class,
     ];
 
     public function getFullNameAttribute()
     {
-
+        return $this->first_name." ".$this->middle_name." ".$this->last_name;
     }
 }
