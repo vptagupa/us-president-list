@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 use App\Casts\Address;
 
@@ -21,7 +22,7 @@ class President extends Model
         'photo'
     ];
 
-    protected $appends = ['fullname'];
+    protected $appends = ['fullName'];
 
     protected $casts = [
         'address'       =>  Address::class,
