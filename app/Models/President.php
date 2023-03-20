@@ -15,7 +15,6 @@ class President extends Model
         'first_name',
         'last_name',
         'middle_name',
-        'age',
         'address',
         'year_started',
         'year_ended',
@@ -25,10 +24,13 @@ class President extends Model
     protected $appends = ['fullname'];
 
     protected $casts = [
-        'year_started'  => 'date:Y-m-d',
-        'year_ended'    => 'date:Y-m-d',
         'address'       =>  Address::class,
     ];
+
+    protected static function newFactory()
+    {
+        return \Database\Factories\PresidentFactory::new();
+    }
 
     public function getFullNameAttribute()
     {
